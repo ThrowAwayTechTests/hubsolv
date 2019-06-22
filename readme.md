@@ -2,18 +2,30 @@
 
 For ease of use there is a docker container include, simply run:
 
+    git clone https://github.com/ThrowAwayTechTests/hubsolv.git
+    cd hubsolv
     cp .env.example .env
     docker-compose up -d
+    docker-compose exec --user application apache composer install -d /web
+    docker-compose exec --user application apache /usr/bin/php /web/artisan migrate:refresh --seed
 
 ## Running tests
 
-To run the behat tests navigate run:
+To run the behat tests:
 
+    ./vendor/bin/behat
+
+## Running tests (if you don't have PHP installed locally)
+
+If the tests fail because you don't have php installed locally then you may need to run the above command in the container directly:
+
+    docker-compose exec --user application apache bash
+    cd /web
     ./vendor/bin/behat
 
 ## API Routes
 
-For manual testing an execution, here are a list of the API routes available:
+For calling the API, here are a list of the API routes available:
 
 ### Book
 
