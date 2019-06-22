@@ -29,6 +29,8 @@ For calling the API, here are a list of the API routes available:
 
 ### Book
 
+| Verb   | Path                           | Action                      |
+--- | --- | ---
 | GET    | http://localhost/book          | BooksController@all         |
 | GET    | http://localhost/book/{id}     | BooksController@get         |
 | POST   | http://localhost/book          | BooksController@add         |
@@ -37,6 +39,8 @@ For calling the API, here are a list of the API routes available:
 
 # Category
 
+| Verb   | Path                           | Action                      |
+--- | --- | ---
 | get    | http://localhost/category      | CategoriesController@all    |
 | get    | http://localhost/category/{id} | CategoriesController@get    |
 | post   | http://localhost/category      | CategoriesController@add    |
