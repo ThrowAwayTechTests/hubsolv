@@ -42,7 +42,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function iShouldReceiveAResponse($arg1)
     {
-        TestCase::assertEquals($this->response->getStatusCode(), $arg1);
+        TestCase::assertEquals($arg1, $this->response->getStatusCode());
     }
 
     /**

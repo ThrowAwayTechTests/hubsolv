@@ -51,8 +51,8 @@ Scenario: Filter books by author
 Scenario: Create book
     Given I am an api consumer
     When I create the following book:
-        | isbn           | title                                       | author        | categories | price |
-        | 978-1491905012 | Modern PHP: New Features and Good Practices | Josh Lockhart | PHP        | 18.99 |
+        | isbn           | title                                       | author        | category | price |
+        | 978-1491905012 | Modern PHP: New Features and Good Practices | Josh Lockhart | PHP      | 18.99 |
     Then I should receive a 201 response
     And the body should contain "978-1491905012"
     And the body should contain "Modern PHP: New Features and Good Practices"
@@ -63,7 +63,7 @@ Scenario: Create book
 Scenario: Create book and test validation
     Given I am an api consumer
     When I create the following book:
-        | isbn                        | title                                       | author        | categories | price |
-        | 978-INVALID-ISBN-1491905012 | Modern PHP: New Features and Good Practices | Josh Lockhart | PHP        | 18.99 |
+        | isbn                        | title                                       | author        | category | price |
+        | 978-INVALID-ISBN-1491905012 | Modern PHP: New Features and Good Practices | Josh Lockhart | PHP      | 18.99 |
     Then I should receive a 400 response
     And the body should contain "Invalid ISBN"

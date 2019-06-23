@@ -4,12 +4,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = [];
+    protected $fillable = ['title'];
 
     protected $dates = [];
 
     public static $rules = [
-        // Validation rules
+        'title' => 'required'
     ];
 
     public function books()

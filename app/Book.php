@@ -16,7 +16,7 @@ class Book extends Model
     ];
 
     public static $messages = [
-        'isbn'   => 'Invalid ISBN',
+        'isbn' => 'Invalid ISBN',
     ];
 
     public function categories()

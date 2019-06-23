@@ -32,7 +32,7 @@ class BooksController extends Controller
             $books->where('author', 'like', '%' . $authorFilter . '%')->get();
         }
 
-        return $this->respond(Response::HTTP_OK, $books->get());
+        return $this->respond(Response::HTTP_OK, $books->with('categories')->get());
     }
 
     public function add(Request $request)
@@ -41,6 +41,12 @@ class BooksController extends Controller
         if ($validator->fails()) {
             return $this->respond(400, $validator);
         }
-        return $this->respond(Response::HTTP_CREATED, Book::create($request->all()));
+        $book = Book::create($request->all());
+        $category = $request->input('category');
+        if ($category) {
+            $categoryId = Category::firstOrCreate(['title' => $category])->id;
+            $book->categories()->attach([$categoryId]);
+        }
+        return $this->respond(Response::HTTP_CREATED, Book::with('categories')->find($book->id));
     }
 }

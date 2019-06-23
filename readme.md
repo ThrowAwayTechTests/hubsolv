@@ -13,6 +13,7 @@ For ease of use there is a docker container include, simply run:
 
 To run the behat tests:
 
+    docker-compose exec --user application apache /usr/bin/php /web/artisan migrate:refresh --seed
     ./vendor/bin/behat
 
 ## Running tests (if you don't have PHP installed locally)
@@ -21,6 +22,7 @@ If the tests fail because you don't have php installed locally then you may need
 
     docker-compose exec --user application apache bash
     cd /web
+    php artisan migrate:refresh --seed
     ./vendor/bin/behat
 
 ## API Routes
